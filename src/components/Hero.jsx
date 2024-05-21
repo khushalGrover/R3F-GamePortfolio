@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Loader } from "@react-three/drei";
-import { Experience } from "./Experience";
+import { MainScene } from "./MainScene";
 import "../App.css";
 
 export function Hero() {
@@ -12,12 +12,14 @@ export function Hero() {
 			
 				<Canvas
 					shadows
-					camera={{ position: [40, 0, 60], fov: 35 }}
+					
+					camera={{ position: [20, 20, 20], fov: 35  }}
+					
 					className="canvas"
 				>
 					<color attach="background" args={["#0078c8"]} />
 					<fog attach="fog" args={["#0078c8", 0, 15]} />
-					<Experience  />
+					<MainScene  />
 				</Canvas>
 				<Loader />
 			
