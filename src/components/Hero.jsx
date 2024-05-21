@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Loader } from "@react-three/drei";
-import { MainScene } from "./MainScene";
+import { MainScene } from "./canvasComponents/MainScene";
 import "../App.css";
 
 export function Hero() {
