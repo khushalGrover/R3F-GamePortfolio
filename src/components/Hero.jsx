@@ -18,7 +18,7 @@ export function Hero() {
 					className="canvas"
 				>
 					<color attach="background" args={["#0078c8"]} />
-					<fog attach="fog" args={["#0078c8", 0, 100]} />
+					<fog attach="fog" args={["#0078c8", 0, 60]} />
 					<MainScene  />
 				</Canvas>
 				<Loader />

@@ -8,7 +8,10 @@ import {
 import { Physics, RigidBody } from "@react-three/rapier";
 import Controller from "ecctrl";
 import Ecctrl from "ecctrl";
-import { ProjectIsland } from "./ProjectIsland";
+import { Islands } from "./Islands"; 
+import { Boats } from "./Boats";
+import { Character } from "./Character";
+
 export const MainScene = () => {
 	const keyboardMap = [
 		{ name: "forward", keys: ["ArrowUp", "KeyW"] },
@@ -23,11 +26,27 @@ export const MainScene = () => {
 		<>
 			<Stage environment="city" intensity={1}>
 				{/* <ambientLight intensity={0.5} /> */}
-				<mesh scale={1} position={[0, 0, 0]} visible={false}>
-					<boxGeometry />
-					<meshStandardMaterial />
-				</mesh>
+				
 			</Stage>
+
+			{/* WATER */}
+			<mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.3, 0]}>
+				<planeGeometry args={[100, 100]} />
+				<MeshReflectorMaterial
+					blur={[50, 50]}
+					resolution={1024}
+					mixBlur={1}
+					mixContrast={2}
+					mixStrength={0.3}
+					roughness={1.2}
+					depthScale={1.2}
+					minDepthThreshold={0.4}
+					maxDepthThreshold={1.4}
+					color="#0078c8"
+					matalness={1}
+				/>
+			</mesh>
+
 
 			<Physics  timeStep="vary">
 				<KeyboardControls map={keyboardMap}>
@@ -35,43 +54,15 @@ export const MainScene = () => {
 						{/* <Gltf castShadow receiveShadow scale={0.315} position={[0, -0.55, 0]} src="/ghost_w_tophat-transformed.glb" /> */}
 
 						{/* PLAYER CUBE */}
-						<mesh scale={[0.6, 1.2, 0.6]} position={[0, 0, 0]}>
-							<boxGeometry />
-							<meshNormalMaterial />
-
-							<mesh
-								scale={[1, 0.1, 0.2]}
-								position={[0, 0.4, 0.6]}
-							>
-								<boxGeometry />
-								<meshStandardMaterial />
-							</mesh>
-						</mesh>
+						<Character
+							position={[0, -0.9, 0]}
+							rotation={[0, Math.PI, 0]}
+						/>
 					</Ecctrl>
 				</KeyboardControls>
 				<RigidBody type="fixed" colliders="trimesh">
-					{/* <Gltf castShadow receiveShadow rotation={[-Math.PI / 2, 0, 0]} scale={0.11} src="/fantasy_game_inn2-transformed.glb" /> */}
-
-					{/* WATER */}
-					<mesh
-						rotation={[-Math.PI / 2, 0, 0]}
-						position={[0, 0.5, 0]}
-					>
-						<planeGeometry args={[100, 100]} />
-						<MeshReflectorMaterial
-							blur={[400, 400]}
-							resolution={1024}
-							mixBlur={0.5}
-							mixStrength={0.5}
-							roughness={1}
-							depthScale={1.2}
-							minDepthThreshold={0.4}
-							maxDepthThreshold={1.4}
-							color="#0078c8"
-							matalness={0.4}
-						/>
-					</mesh>
-					<ProjectIsland position={[-50,0,0]} scale={30} />
+					<Islands position={[0, 0, 0]} scale={1} />
+					<Boats />
 				</RigidBody>
 			</Physics>
 		</>
