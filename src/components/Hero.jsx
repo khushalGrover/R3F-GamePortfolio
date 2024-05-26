@@ -20,7 +20,7 @@ export function Hero() {
 				>
 					<color attach="background" args={["#0078c8"]} />
 					<fog attach="fog" args={["#0078c8", 0, 60]} />
-					{/* <MainScene  /> */}
+					<MainScene  />
 					<mesh>
 						<boxGeometry args={[1, 1, 1]} />
 						<meshNormalMaterial />
