@@ -6,11 +6,12 @@ import {
 	KeyboardControls,
 } from "@react-three/drei";
 import { Physics, RigidBody } from "@react-three/rapier";
-import Controller from "ecctrl";
 import Ecctrl from "ecctrl";
-import { Islands } from "./Islands"; 
-import { Boats } from "./Boats";
 import { Character } from "./Character";
+
+// import Controller from "ecctrl";
+// import { Islands } from "./Islands";
+// import { Boats } from "./Boats";
 
 export const MainScene = () => {
 	const keyboardMap = [
@@ -26,29 +27,9 @@ export const MainScene = () => {
 		<>
 			<Stage environment="city" intensity={1}>
 				{/* <ambientLight intensity={0.5} /> */}
-				
 			</Stage>
 
-			{/* WATER */}
-			<mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.3, 0]}>
-				<planeGeometry args={[100, 100]} />
-				<MeshReflectorMaterial
-					blur={[50, 50]}
-					resolution={1024}
-					mixBlur={1}
-					mixContrast={2}
-					mixStrength={0.3}
-					roughness={1.2}
-					depthScale={1.2}
-					minDepthThreshold={0.4}
-					maxDepthThreshold={1.4}
-					color="#0078c8"
-					matalness={1}
-				/>
-			</mesh>
-
-
-			<Physics  timeStep="vary">
+			<Physics timeStep="vary">
 				<KeyboardControls map={keyboardMap}>
 					<Ecctrl>
 						{/* <Gltf castShadow receiveShadow scale={0.315} position={[0, -0.55, 0]} src="/ghost_w_tophat-transformed.glb" /> */}
@@ -61,8 +42,29 @@ export const MainScene = () => {
 					</Ecctrl>
 				</KeyboardControls>
 				<RigidBody type="fixed" colliders="trimesh">
-					<Islands position={[0, 0, 0]} scale={1} />
-					<Boats />
+					{/* <Islands position={[0, 0, 0]} scale={1} /> */}
+					{/* <Boats /> */}
+
+					{/* WATER */}
+					<mesh
+						rotation={[-Math.PI / 2, 0, 0]}
+						position={[0, 0.3, 0]}
+					>
+						<planeGeometry args={[100, 100]} />
+						<MeshReflectorMaterial
+							blur={[50, 50]}
+							resolution={1024}
+							mixBlur={1}
+							mixContrast={2}
+							mixStrength={0.3}
+							roughness={1.2}
+							depthScale={1.2}
+							minDepthThreshold={0.4}
+							maxDepthThreshold={1.4}
+							color="#0078c8"
+							matalness={1}
+						/>
+					</mesh>
 				</RigidBody>
 			</Physics>
 		</>
