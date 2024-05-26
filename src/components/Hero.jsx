@@ -5,12 +5,12 @@ import { Canvas } from "@react-three/fiber";
 import { Loader } from "@react-three/drei";
 import { MainScene } from "./canvasComponents/MainScene";
 import "../App.css";
-
+import Ecctrl, { EcctrlJoystick } from 'ecctrl'
 export function Hero() {
 
 	return (
 		<div className="h-full w-full">
-			
+				 <EcctrlJoystick />
 				<Canvas
 					shadows
 					

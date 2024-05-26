@@ -6,9 +6,10 @@ import {
 	KeyboardControls,
 } from "@react-three/drei";
 import { Physics, RigidBody } from "@react-three/rapier";
-import Ecctrl from "ecctrl";
-import { Character } from "./Character";
+import Ecctrl , { EcctrlJoystick }from "ecctrl";
 import Controller from "ecctrl";
+
+import { Character } from "./Character";
 import { Islands } from "./Islands";
 import { Boats } from "./Boats";
 
@@ -59,6 +60,7 @@ export const MainScene = () => {
 						/>
 					</Ecctrl>
 				</KeyboardControls>
+				
 				<RigidBody type="fixed" colliders="trimesh">
 					<Islands position={[0, 0, 0]} scale={1} />
 					<Boats />
