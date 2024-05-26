@@ -7,7 +7,7 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function Islands(props) {
-  const { nodes, materials } = useGLTF('./public/models/Islands.gltf')
+  const { nodes, materials } = useGLTF('./models/Islands.gltf')
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Circle002.geometry} material={materials['Master Pallet']} position={[-33.775, 16.476, 4.767]} />
@@ -30,4 +30,4 @@ export function Islands(props) {
   )
 }
 
-useGLTF.preload('./public/models/Islands.gltf')
+useGLTF.preload('./models/Islands.gltf')

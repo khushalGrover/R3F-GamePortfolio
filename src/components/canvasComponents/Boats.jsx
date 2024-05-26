@@ -7,7 +7,7 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function Boats(props) {
-  const { nodes, materials } = useGLTF('./public/models/boats0.2.gltf')
+  const { nodes, materials } = useGLTF('./models/boats0.2.gltf')
   return (
     <group {...props} dispose={null}>
       <group position={[9.104, 0, -0.164]}>
@@ -21,4 +21,4 @@ export function Boats(props) {
   )
 }
 
-useGLTF.preload('./public/models/boats0.2.gltf')
+useGLTF.preload('./models/boats0.2.gltf')
