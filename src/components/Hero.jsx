@@ -5,12 +5,16 @@ import { Canvas } from "@react-three/fiber";
 import { Loader } from "@react-three/drei";
 import { MainScene } from "./canvasComponents/MainScene";
 import "../App.css";
-import Ecctrl, { EcctrlJoystick } from 'ecctrl'
+import Overlay from "./Overlay";
+
 export function Hero() {
 
 	return (
-		<div className="h-full w-full">
-				 <EcctrlJoystick />
+		<div className="static h-full w-full">
+
+				<Overlay />
+				
+				
 				<Canvas
 					shadows
 					

@@ -31,7 +31,7 @@ export const MainScene = () => {
 			</Stage>
 
 			{/* WATER */}
-			<mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.3, 0]}>
+			<mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
 				<planeGeometry args={[100, 100]} />
 				<MeshReflectorMaterial
 					blur={[50, 50]}
@@ -48,9 +48,9 @@ export const MainScene = () => {
 				/>
 			</mesh>
 
-			<Physics timeStep="vary">
+			<Physics debug timeStep="vary">
 				<KeyboardControls map={keyboardMap}>
-					<Ecctrl>
+					<Ecctrl >
 						{/* <Gltf castShadow receiveShadow scale={0.315} position={[0, -0.55, 0]} src="/ghost_w_tophat-transformed.glb" /> */}
 
 						{/* PLAYER CUBE */}
