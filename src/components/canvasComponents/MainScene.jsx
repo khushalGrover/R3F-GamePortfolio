@@ -24,41 +24,13 @@ export const MainScene = () => {
 		{ name: "jump", keys: ["Space"] },
 		{ name: "run", keys: ["Shift"] },
 	];
-	const cameraControlsRef = useRef();
-	const characterRef = useRef();
-
-	useEffect(() => {
-		if (cameraControlsRef.current && characterRef.current) {
-			const handleFrame = () => {
-				const charPosition = characterRef.current.position;
-				// console.log(characterRef.current.position);
-				cameraControlsRef.current.setLookAt(
-					charPosition.x + 10,
-					charPosition.y + 10,
-					charPosition.z + 10, // Adjust the Z position as needed for better view
-					charPosition.x,
-					charPosition.y,
-					charPosition.z,
-					true
-				);
-			};
-
-			cameraControlsRef.current.addEventListener("update", handleFrame);
-
-			return () => {
-				cameraControlsRef.current.removeEventListener(
-					"update",
-					handleFrame
-				);
-			};
-		}
-	}, []);
+	
 	return (
 		<>
 			<Stage environment="city" intensity={1}>
 				{/* <ambientLight intensity={0.5} /> */}
 			</Stage>
-			<CameraControls ref={cameraControlsRef} orthographic />
+			{/* <CameraControls ref={cameraControlsRef} orthographic /> */}
 			{/* WATER */}
 			<mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
 				<planeGeometry args={[100, 100]} />
@@ -79,12 +51,11 @@ export const MainScene = () => {
 
 			<Physics timeStep="vary">
 				<KeyboardControls map={keyboardMap}>
-					<Ecctrl disableFollowCam={true}>
+					<Ecctrl disableFollowCam={false}>
 						{/* <Gltf castShadow receiveShadow scale={0.315} position={[0, -0.55, 0]} src="/ghost_w_tophat-transformed.glb" /> */}
 
 						{/* PLAYER CUBE */}
 						<Character
-							ref={characterRef}
 							position={[0, -0.9, 0]}
 							rotation={[0, Math.PI, 0]}
 						/>
