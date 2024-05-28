@@ -1,11 +1,11 @@
-import { Hero } from "./components/Hero";
+import { CurveScene } from "./components/canvasComponents/CurveScene";
 
 
 function App() {
   return (
-    <>
-      <Hero />
-    </>
+    <div style={{ height: '100vh' }}>
+    <CurveScene />
+  </div>
   );
 }
 

@@ -24,30 +24,13 @@ export const MainScene = () => {
 		{ name: "jump", keys: ["Space"] },
 		{ name: "run", keys: ["Shift"] },
 	];
-	
+
 	return (
 		<>
 			<Stage environment="city" intensity={1}>
 				{/* <ambientLight intensity={0.5} /> */}
 			</Stage>
 			{/* <CameraControls ref={cameraControlsRef} orthographic /> */}
-			{/* WATER */}
-			<mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
-				<planeGeometry args={[100, 100]} />
-				<MeshReflectorMaterial
-					blur={[50, 50]}
-					resolution={1024}
-					mixBlur={1}
-					mixContrast={2}
-					mixStrength={0.3}
-					roughness={1.2}
-					depthScale={1.2}
-					minDepthThreshold={0.4}
-					maxDepthThreshold={1.4}
-					color="#0078c8"
-					matalness={1}
-				/>
-			</mesh>
 
 			<Physics timeStep="vary">
 				<KeyboardControls map={keyboardMap}>
@@ -62,8 +45,23 @@ export const MainScene = () => {
 					</Ecctrl>
 				</KeyboardControls>
 				<RigidBody type="fixed" colliders="trimesh">
-					<Islands position={[0, 0, 0]} scale={1} />
-					<Boats />
+					{/* WATER */}
+					<mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
+						<planeGeometry args={[100, 100]} />
+						<MeshReflectorMaterial
+							blur={[50, 50]}
+							resolution={1024}
+							mixBlur={1}
+							mixContrast={2}
+							mixStrength={0.3}
+							roughness={1.2}
+							depthScale={1.2}
+							minDepthThreshold={0.4}
+							maxDepthThreshold={1.4}
+							color="#0078c8"
+							matalness={1}
+						/>
+					</mesh>
 				</RigidBody>
 			</Physics>
 		</>
